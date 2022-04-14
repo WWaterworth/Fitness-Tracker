@@ -2,7 +2,7 @@ import { useParams, useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { callApi } from "../api";
 
-const Login = ({ token, setToken, user, setUser }) => {
+const Register = ({ token, setToken, user, setUser }) => {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -11,18 +11,18 @@ const Login = ({ token, setToken, user, setUser }) => {
     event.preventDefault();
 
     const result = await callApi({
-      url: "/users/login",
+      url: "/users/register",
       method: "POST",
       body: { username, password },
     });
-    console.log(result);
+    console.log(result.user);
     setToken(result.token);
     setUser(result.user);
     history.push("/");
   };
   return (
     <>
-      <h1>This is the login page</h1>
+      <h1>This is the register page</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -48,4 +48,4 @@ const Login = ({ token, setToken, user, setUser }) => {
   );
 };
 
-export default Login;
+export default Register;

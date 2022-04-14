@@ -1,12 +1,18 @@
 import { Route, BrowserRouter } from "react-router-dom";
-import { Home, Routines, MyRoutines, Activities, Nav, Login } from "./index";
+import {
+  Home,
+  Routines,
+  MyRoutines,
+  Activities,
+  Nav,
+  Login,
+  Register,
+} from "./index";
 import React, { useState, useEffect } from "react";
 
 const App = () => {
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
-  console.log("token", token);
-  console.log("user", user);
 
   return (
     <>
@@ -14,7 +20,7 @@ const App = () => {
         <BrowserRouter>
           <Nav />
           <Route exact path="/">
-            <Home />
+            <Home user={user} />
           </Route>
           <Route exact path="/routines">
             <Routines />
@@ -32,6 +38,14 @@ const App = () => {
           </Route>
           <Route exact path="/activities">
             <Activities />
+          </Route>
+          <Route exact path="/register">
+            <Register
+              token={token}
+              setToken={setToken}
+              user={user}
+              setUser={setUser}
+            />
           </Route>
         </BrowserRouter>
       </main>
