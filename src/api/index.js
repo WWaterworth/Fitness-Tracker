@@ -1,5 +1,6 @@
 // THIS IS WHERE YOUR CLIENT SIDE API CODE LIVES
-export const { REACT_API_URL } = process.env;
+const { REACT_API_URL = "https://fitnesstrac-kr.herokuapp.com/api" } =
+  process.env;
 
 export const callApi = async ({ url, method = "GET", token, body }) => {
   try {

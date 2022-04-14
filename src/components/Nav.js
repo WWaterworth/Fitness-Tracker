@@ -7,7 +7,7 @@ const Nav = () => {
       <Link to="/activities"> Activities |</Link>
       <Link to="/routines"> Routines |</Link>
       <Link to="/myroutines"> My Routines |</Link>
-      <Link to="/account"> Account</Link>
+      <Link to="/login"> Login</Link>
     </nav>
   );
 };
