@@ -4,7 +4,9 @@ import React, { useState, useEffect } from "react";
 
 const App = () => {
   const [token, setToken] = useState("");
-  const [routines, setRoutines] = useState([]);
+  const [user, setUser] = useState([]);
+  console.log("token", token);
+  console.log("user", user);
 
   return (
     <>
@@ -15,10 +17,15 @@ const App = () => {
             <Home />
           </Route>
           <Route exact path="/routines">
-            <Routines routines={routines} setRoutines={setRoutines} />
+            <Routines />
           </Route>
           <Route exact path="/login">
-            <Login token={token} setToken={setToken} />
+            <Login
+              token={token}
+              setToken={setToken}
+              user={user}
+              setUser={setUser}
+            />
           </Route>
           <Route exact path="/myroutines">
             <MyRoutines />
