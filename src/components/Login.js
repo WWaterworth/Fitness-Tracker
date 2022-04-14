@@ -44,6 +44,9 @@ const Login = ({ token, setToken, user, setUser }) => {
         ></input>
         <button type="submit">Submit</button>
       </form>
+      {!token ? (
+        <button onClick={() => history.push("/register")}> Register </button>
+      ) : null}
     </>
   );
 };
