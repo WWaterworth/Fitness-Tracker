@@ -14,15 +14,30 @@ const Routines = () => {
     };
     getRoutines();
   }, []);
+
   return (
     <>
       <h1>This is the routines page</h1>
       {routines.map((routine) => {
+        console.log(routine.activities);
         return (
           <div key={routine.id}>
             <h2>Routine: {routine.name}</h2>
             <p>Creator: {routine.creatorName}</p>
             <p>Goal: {routine.goal}</p>
+
+            {routine.activities.map((activity) => {
+              return (
+                <>
+                  <ul>
+                    <li>Activity Name: {activity.name}</li>
+                    <li>Activity Description: {activity.duration}</li>
+                    <li>Activity Duration: {activity.duration}</li>
+                    <li>Activity Count: {activity.count}</li>
+                  </ul>
+                </>
+              );
+            })}
           </div>
         );
       })}
