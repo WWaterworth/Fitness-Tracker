@@ -3,25 +3,24 @@ import { DeleteRoutine } from "./index";
 import { useParams } from "react-router-dom";
 import { callApi } from "../api";
 
-const SingleUser = ({
+const UserRoutines = ({
   token,
-  singleUser,
-  setSingleUser,
+  userRoutines,
+  setUserRoutines,
   routines,
   setRoutines,
   user,
 }) => {
   useEffect(() => {
-    const getSingleUser = async () => {
+    const getUserRoutines = async () => {
       const data = await callApi({
         url: `/users/${user.username}/routines`,
         method: "GET",
         token,
       });
-      setSingleUser(data);
-      console.log("SET SINGLE USER", singleUser);
+      setUserRoutines(data);
     };
-    getSingleUser(singleUser);
+    getUserRoutines(userRoutines);
   }, []);
 
   const deletePost = async (routineId) => {
@@ -35,7 +34,7 @@ const SingleUser = ({
   return (
     <>
       <h1>This is the single user routines page</h1>
-      {singleUser.map((routine) => {
+      {userRoutines.map((routine) => {
         console.log("are you undefined?", routine.activity);
         return (
           <div key={routine.id}>
@@ -63,4 +62,4 @@ const SingleUser = ({
     </>
   );
 };
-export default SingleUser;
+export default UserRoutines;

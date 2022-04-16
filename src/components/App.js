@@ -8,7 +8,7 @@ import {
   Login,
   Register,
   AddActivities,
-  SingleUser,
+  UserRoutines,
 } from "./index";
 import React, { useState, useEffect } from "react";
 
@@ -17,7 +17,7 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
-  const [singleUser, setSingleUser] = useState([]);
+  const [userRoutines, setUserRoutines] = useState([]);
 
   return (
     <>
@@ -47,9 +47,9 @@ const App = () => {
               token={token}
               setToken={setToken}
             />
-            <SingleUser
-              singleUser={singleUser}
-              setSingleUser={setSingleUser}
+            <UserRoutines
+              userRoutines={userRoutines}
+              setUserRoutines={setUserRoutines}
               token={token}
               routines={routines}
               user={user}
