@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { DeleteRoutine } from "./index";
 import { useParams } from "react-router-dom";
 import { callApi } from "../api";
 
@@ -22,6 +23,15 @@ const SingleUser = ({
     };
     getSingleUser(singleUser);
   }, []);
+
+  const deletePost = async (routineId) => {
+    await callApi({
+      url: `/routines/${routineId}`,
+      method: "DELETE",
+      token,
+    });
+  };
+
   return (
     <>
       <h1>This is the single user routines page</h1>
@@ -32,6 +42,9 @@ const SingleUser = ({
             <h2>Routine: {routine.name}</h2>
             <p>Creator: {routine.creatorName}</p>
             <p>Goal: {routine.goal}</p>
+            <button type="submit" onClick={() => deletePost(routine.id)}>
+              Delete
+            </button>
             {routine.activities.map((activity) => {
               return (
                 <>
