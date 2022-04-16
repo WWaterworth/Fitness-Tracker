@@ -23,7 +23,7 @@ const App = () => {
     <>
       <main>
         <BrowserRouter>
-          <Nav />
+          <Nav token={token}/>
           <Route exact path="/">
             <Home user={user} />
           </Route>
