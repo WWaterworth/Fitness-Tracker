@@ -19,7 +19,6 @@ const Routines = () => {
     <>
       <h1>This is the routines page</h1>
       {routines.map((routine) => {
-        console.log(routine.activities);
         return (
           <div key={routine.id}>
             <h2>Routine: {routine.name}</h2>

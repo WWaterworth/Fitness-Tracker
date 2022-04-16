@@ -7,12 +7,15 @@ import {
   Nav,
   Login,
   Register,
+  AddActivities,
 } from "./index";
 import React, { useState, useEffect } from "react";
 
 const App = () => {
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
+  const [routines, setRoutines] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   return (
     <>
@@ -34,10 +37,26 @@ const App = () => {
             />
           </Route>
           <Route exact path="/myroutines">
-            <MyRoutines />
+            <MyRoutines
+              routines={routines}
+              setRoutines={setRoutines}
+              token={token}
+              setToken={setToken}
+            />
           </Route>
           <Route exact path="/activities">
-            <Activities />
+            <AddActivities
+              token={token}
+              setToken={setToken}
+              activities={activities}
+              setActivities={setActivities}
+            />
+            <Activities
+              activities={activities}
+              setActivities={setActivities}
+              token={token}
+              setToken={setToken}
+            />
           </Route>
           <Route exact path="/register">
             <Register
