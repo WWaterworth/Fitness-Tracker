@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { DeleteRoutine } from "./index";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
 import { callApi } from "../api";
 
 const UserRoutines = ({
@@ -35,7 +33,6 @@ const UserRoutines = ({
     <>
       <h1>This is the single user routines page</h1>
       {userRoutines.map((routine) => {
-        console.log("are you undefined?", routine.activity);
         return (
           <div key={routine.id}>
             <h2>Routine: {routine.name}</h2>

@@ -15,7 +15,6 @@ const Login = ({ token, setToken, user, setUser }) => {
       method: "POST",
       body: { username, password },
     });
-    console.log(result);
     setToken(result.token);
     setUser(result.user);
     history.push("/");
@@ -29,7 +28,6 @@ const Login = ({ token, setToken, user, setUser }) => {
           placeholder="username"
           value={username}
           onChange={(event) => {
-            console.log(event.target.value);
             setUsername(event.target.value);
           }}
         ></input>
@@ -38,7 +36,6 @@ const Login = ({ token, setToken, user, setUser }) => {
           placeholder="password"
           value={password}
           onChange={(event) => {
-            console.log(event.target.value);
             setPassword(event.target.value);
           }}
         ></input>

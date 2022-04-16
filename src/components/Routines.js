@@ -9,7 +9,6 @@ const Routines = ({ routines, setRoutines }) => {
         method: "GET",
       });
       setRoutines(data);
-      console.log(data);
     };
     getRoutines();
   }, []);
