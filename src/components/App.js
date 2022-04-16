@@ -8,6 +8,7 @@ import {
   Login,
   Register,
   AddActivities,
+  SingleUser,
 } from "./index";
 import React, { useState, useEffect } from "react";
 
@@ -16,6 +17,7 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
+  const [singleUser, setSingleUser] = useState([]);
 
   return (
     <>
@@ -26,7 +28,7 @@ const App = () => {
             <Home user={user} />
           </Route>
           <Route exact path="/routines">
-            <Routines />
+            <Routines routines={routines} setRoutines={setRoutines} />
           </Route>
           <Route exact path="/login">
             <Login
@@ -34,6 +36,8 @@ const App = () => {
               setToken={setToken}
               user={user}
               setUser={setUser}
+              routines={routines}
+              setRoutines={routines}
             />
           </Route>
           <Route exact path="/myroutines">
@@ -42,6 +46,13 @@ const App = () => {
               setRoutines={setRoutines}
               token={token}
               setToken={setToken}
+            />
+            <SingleUser
+              singleUser={singleUser}
+              setSingleUser={setSingleUser}
+              token={token}
+              routines={routines}
+              user={user}
             />
           </Route>
           <Route exact path="/activities">

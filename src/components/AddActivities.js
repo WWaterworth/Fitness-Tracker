@@ -3,6 +3,7 @@ import { callApi } from "../api";
 const AddActivities = ({ token, user, activities, setActivities }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const resp = await callApi({

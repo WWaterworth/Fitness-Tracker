@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { callApi } from "../api";
 
-const Routines = () => {
-  const [routines, setRoutines] = useState([]);
-
+const Routines = ({ routines, setRoutines }) => {
   useEffect(() => {
     const getRoutines = async () => {
       const data = await callApi({
@@ -11,6 +9,7 @@ const Routines = () => {
         method: "GET",
       });
       setRoutines(data);
+      console.log(data);
     };
     getRoutines();
   }, []);
@@ -27,14 +26,12 @@ const Routines = () => {
 
             {routine.activities.map((activity) => {
               return (
-                <>
-                  <ul>
-                    <li>Activity Name: {activity.name}</li>
-                    <li>Activity Description: {activity.duration}</li>
-                    <li>Activity Duration: {activity.duration}</li>
-                    <li>Activity Count: {activity.count}</li>
-                  </ul>
-                </>
+                <ul key={activity.id}>
+                  <li>Activity Name: {activity.name}</li>
+                  <li>Activity Description: {activity.description}</li>
+                  <li>Activity Duration: {activity.duration}</li>
+                  <li>Activity Count: {activity.count}</li>
+                </ul>
               );
             })}
           </div>
