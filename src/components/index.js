@@ -9,3 +9,4 @@ export { default as Login } from "./Login";
 export { default as Register } from "./Register";
 export { default as AddActivities } from "./AddActivities";
 export { default as UserRoutines } from "./UserRoutines";
+export { default as Logout } from "./Logout";

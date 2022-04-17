@@ -7,7 +7,8 @@ const Nav = ({ token }) => {
       <Link to="/activities"> Activities |</Link>
       <Link to="/routines"> Routines |</Link>
       {token ? <Link to="/myroutines"> My Routines |</Link> : null}
-      <Link to="/login"> Login</Link>
+      {!token ? <Link to="/login"> Login</Link> : null}
+      {token ? <Link to="/logout"> Logout</Link> : null}
     </nav>
   );
 };

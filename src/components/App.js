@@ -9,6 +9,7 @@ import {
   Register,
   AddActivities,
   UserRoutines,
+  Logout,
 } from "./index";
 import React, { useState, useEffect } from "react";
 
@@ -76,6 +77,9 @@ const App = () => {
               user={user}
               setUser={setUser}
             />
+          </Route>
+          <Route exact path="/logout">
+            <Logout setUser={setUser} setToken={setToken} />
           </Route>
         </BrowserRouter>
       </main>
