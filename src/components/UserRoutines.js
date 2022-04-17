@@ -22,12 +22,23 @@ const UserRoutines = ({
     getUserRoutines(userRoutines);
   }, []);
 
+  const reRenderUserRoutines = async () => {
+    const data = await callApi({
+      url: `/users/${user.username}/routines`,
+      method: "GET",
+      token,
+    });
+    setUserRoutines(data);
+    reRenderUserRoutines();
+  };
+
   const deletePost = async (routineId) => {
     await callApi({
       url: `/routines/${routineId}`,
       method: "DELETE",
       token,
     });
+    reRenderUserRoutines();
   };
 
   return (

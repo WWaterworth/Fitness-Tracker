@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { DeleteRoutine } from "./index";
 import { callApi } from "../api";
 
 const MyRoutines = ({ token, user, routines, setRoutines }) => {
@@ -17,15 +16,17 @@ const MyRoutines = ({ token, user, routines, setRoutines }) => {
       body: { name, goal, isPublic },
     });
 
-    const allRoutinesResp = await callApi({ url: `/routines`, method: "GET" });
-    setRoutines(allRoutinesResp);
+    setName("");
+    setGoal("");
   };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="name"
+          value={name}
           onChange={(event) => setName(event.target.value)}
         />
         <input
