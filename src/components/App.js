@@ -50,6 +50,7 @@ const App = () => {
             />
             <UserRoutines
               activities={activities}
+              setActivities={setActivities}
               userRoutines={userRoutines}
               setUserRoutines={setUserRoutines}
               token={token}

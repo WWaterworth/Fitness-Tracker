@@ -3,6 +3,7 @@ import { callApi } from "../api";
 
 const UserRoutines = ({
   activities,
+  setActivities,
   token,
   userRoutines,
   setUserRoutines,
@@ -29,6 +30,17 @@ const UserRoutines = ({
     getUserRoutines(userRoutines);
   }, []);
 
+  useEffect(() => {
+    const getActivities = async () => {
+      const data = await callApi({
+        url: `/activities`,
+        method: "GET",
+      });
+      setActivities(data);
+    };
+    getActivities();
+  }, []);
+
   const reRenderUserRoutines = async () => {
     const data = await callApi({
       url: `/users/${user.username}/routines`,
@@ -48,6 +60,7 @@ const UserRoutines = ({
         body: { activityId, count, duration },
         token,
       });
+      reRenderUserRoutines();
       return response;
     } catch (error) {
       alert(error);
