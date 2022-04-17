@@ -18,13 +18,26 @@ const AddActivities = ({ token, user, activities, setActivities }) => {
       method: "GET",
     });
     setActivities(allActivitiesResp);
+    setName("");
+    setDescription("");
   };
+
+  const reRenderActivities = async () => {
+    const allActivities = await callApi({
+      url: `/activities`,
+      method: "GET",
+    });
+    setActivities(allActivities);
+    reRenderActivities();
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="name"
+          value={name}
           onChange={(event) => setName(event.target.value)}
         />
         <input
