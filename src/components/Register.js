@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { callApi } from "../api";
 
@@ -10,15 +10,27 @@ const Register = ({ token, setToken, user, setUser }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const result = await callApi({
-      url: "/users/register",
-      method: "POST",
-      body: { username, password },
-    });
-    console.log(result.user);
-    setToken(result.token);
-    setUser(result.user);
-    history.push("/");
+    try {
+      if (password.length <= 7) {
+        const error = alert("Password is too short");
+        return error;
+      }
+
+      const result = await callApi({
+        url: "/users/register",
+        method: "POST",
+        body: { username, password },
+      });
+      if (token) {
+        setToken(result.token);
+        setUser(result.user);
+        history.push("/");
+      } else {
+        alert("username already exists");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>

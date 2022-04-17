@@ -10,14 +10,22 @@ const Login = ({ token, setToken, user, setUser }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const result = await callApi({
-      url: "/users/login",
-      method: "POST",
-      body: { username, password },
-    });
-    setToken(result.token);
-    setUser(result.user);
-    history.push("/");
+    try {
+      const result = await callApi({
+        url: "/users/login",
+        method: "POST",
+        body: { username, password },
+      });
+      if (result) {
+        setToken(result.token);
+        setUser(result.user);
+        history.push("/");
+      } else {
+        alert("username or password is invalid");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
