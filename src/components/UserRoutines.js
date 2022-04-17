@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { callApi } from "../api";
 
 const UserRoutines = ({
+  activities,
   token,
   userRoutines,
   setUserRoutines,
@@ -9,11 +10,12 @@ const UserRoutines = ({
   setRoutines,
   user,
 }) => {
+  const [activityId, setActivityId] = useState(Number);
+  const [count, setCount] = useState(Number);
+  const [duration, setDuration] = useState(Number);
   const [nameToEdit, setNameToEdit] = useState("");
   const [goalToEdit, setGoalToEdit] = useState("");
   const [isPublic, setIsPublic] = useState(true);
-  console.log("Name to edit", nameToEdit);
-  console.log("Goal to edit", goalToEdit);
 
   useEffect(() => {
     const getUserRoutines = async () => {
@@ -35,6 +37,21 @@ const UserRoutines = ({
     });
     setUserRoutines(data);
     reRenderUserRoutines();
+  };
+
+  const addActivity = (routineId) => async (event) => {
+    event.preventDefault();
+    try {
+      const response = await callApi({
+        url: `/routines/${routineId}/activities`,
+        method: "POST",
+        body: { activityId, count, duration },
+        token,
+      });
+      return response;
+    } catch (error) {
+      alert(error);
+    }
   };
 
   const editPost = async (routineId, nameToEdit, goalToEdit, isPublic) => {
@@ -68,6 +85,34 @@ const UserRoutines = ({
             <h2>Routine: {routine.name}</h2>
             <p>Creator: {routine.creatorName}</p>
             <p>Goal: {routine.goal}</p>
+            <form onSubmit={addActivity(routine.id)}>
+              <select onChange={(event) => setActivityId(event.target.value)}>
+                {activities.map((activity) => (
+                  <option key={activity.id} value={activity.id}>
+                    {activity.name}
+                  </option>
+                ))}
+              </select>
+              <fieldset>
+                <label>Repetitions: </label>
+                <input
+                  type="number"
+                  onChange={(event) => {
+                    setCount(event.target.value);
+                  }}
+                />
+              </fieldset>
+              <fieldset>
+                <label>Duration: </label>
+                <input
+                  type="number"
+                  onChange={(event) => {
+                    setDuration(event.target.value);
+                  }}
+                />
+              </fieldset>
+              <button type="Submit">Submit New Activity</button>
+            </form>
             <input
               type="text"
               placeholder="Edit routine name"

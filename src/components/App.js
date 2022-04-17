@@ -38,7 +38,7 @@ const App = () => {
               user={user}
               setUser={setUser}
               routines={routines}
-              setRoutines={routines}
+              setRoutines={setRoutines}
             />
           </Route>
           <Route exact path="/myroutines">
@@ -49,6 +49,7 @@ const App = () => {
               setToken={setToken}
             />
             <UserRoutines
+              activities={activities}
               userRoutines={userRoutines}
               setUserRoutines={setUserRoutines}
               token={token}
