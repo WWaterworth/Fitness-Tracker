@@ -98,34 +98,7 @@ const UserRoutines = ({
             <h2>Routine: {routine.name}</h2>
             <p>Creator: {routine.creatorName}</p>
             <p>Goal: {routine.goal}</p>
-            <form onSubmit={addActivity(routine.id)}>
-              <select onChange={(event) => setActivityId(event.target.value)}>
-                {activities.map((activity) => (
-                  <option key={activity.id} value={activity.id}>
-                    {activity.name}
-                  </option>
-                ))}
-              </select>
-              <fieldset>
-                <label>Repetitions: </label>
-                <input
-                  type="number"
-                  onChange={(event) => {
-                    setCount(event.target.value);
-                  }}
-                />
-              </fieldset>
-              <fieldset>
-                <label>Duration: </label>
-                <input
-                  type="number"
-                  onChange={(event) => {
-                    setDuration(event.target.value);
-                  }}
-                />
-              </fieldset>
-              <button type="Submit">Submit New Activity</button>
-            </form>
+
             <input
               type="text"
               placeholder="Edit routine name"
@@ -165,6 +138,34 @@ const UserRoutines = ({
                 </>
               );
             })}
+            <form onSubmit={addActivity(routine.id)}>
+              <select onChange={(event) => setActivityId(event.target.value)}>
+                {activities.map((activity) => (
+                  <option key={activity.id} value={activity.id}>
+                    {activity.name}
+                  </option>
+                ))}
+              </select>
+              <fieldset>
+                <label>Repetitions: </label>
+                <input
+                  type="number"
+                  onChange={(event) => {
+                    setCount(event.target.value);
+                  }}
+                />
+              </fieldset>
+              <fieldset>
+                <label>Duration: </label>
+                <input
+                  type="number"
+                  onChange={(event) => {
+                    setDuration(event.target.value);
+                  }}
+                />
+              </fieldset>
+              <button type="Submit">Submit New Activity</button>
+            </form>
           </div>
         );
       })}
