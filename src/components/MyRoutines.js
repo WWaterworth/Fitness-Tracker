@@ -6,17 +6,18 @@ const MyRoutines = ({ token, user, routines, setRoutines }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(true);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const resp = await callApi({
+
+    await callApi({
       url: "/routines",
       method: "POST",
       token,
       body: { name, goal, isPublic },
     });
-    console.log("Response!!!!", resp);
+
     const allRoutinesResp = await callApi({ url: `/routines`, method: "GET" });
-    console.log("routinesResponse!!!!", allRoutinesResp);
     setRoutines(allRoutinesResp);
   };
   return (
