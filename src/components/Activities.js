@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { callApi } from "../api";
 
-const Activities = () => {
-  const [activities, setActivities] = useState([]);
-
+const Activities = ({ activities, setActivities }) => {
   useEffect(() => {
     const getActivities = async () => {
       const data = await callApi({

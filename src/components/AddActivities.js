@@ -6,13 +6,13 @@ const AddActivities = ({ token, user, activities, setActivities }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const resp = await callApi({
+    await callApi({
       url: "/activities",
       method: "POST",
       token,
       body: { name, description },
     });
-    console.log("activities!!!!", activities);
+
     const allActivitiesResp = await callApi({
       url: `/activities`,
       method: "GET",
