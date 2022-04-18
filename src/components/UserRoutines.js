@@ -7,8 +7,6 @@ const UserRoutines = ({
   token,
   userRoutines,
   setUserRoutines,
-  routines,
-  setRoutines,
   user,
 }) => {
   const [activityId, setActivityId] = useState(Number);

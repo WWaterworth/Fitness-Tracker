@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import { callApi } from "../api";
 
-const MyRoutines = ({
-  token,
-  user,
-  routines,
-  setRoutines,
-  setUserRoutines,
-}) => {
+const MyRoutines = ({ token, user, setUserRoutines }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(true);
@@ -24,6 +18,7 @@ const MyRoutines = ({
 
     setName("");
     setGoal("");
+    reRenderUserRoutines();
   };
   const reRenderUserRoutines = async () => {
     const data = await callApi({

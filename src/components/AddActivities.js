@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { callApi } from "../api";
-const AddActivities = ({ token, user, activities, setActivities }) => {
+
+const AddActivities = ({ token, setActivities }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
     await callApi({
       url: "/activities",
       method: "POST",

@@ -1,8 +1,8 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { callApi } from "../api";
 
-const Login = ({ token, setToken, user, setUser }) => {
+const Login = ({ token, setToken, setUser }) => {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

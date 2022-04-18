@@ -32,14 +32,7 @@ const App = () => {
             <Routines routines={routines} setRoutines={setRoutines} />
           </Route>
           <Route exact path="/login">
-            <Login
-              token={token}
-              setToken={setToken}
-              user={user}
-              setUser={setUser}
-              routines={routines}
-              setRoutines={setRoutines}
-            />
+            <Login token={token} setToken={setToken} setUser={setUser} />
           </Route>
           <Route exact path="/myroutines">
             <MyRoutines
@@ -48,6 +41,7 @@ const App = () => {
               token={token}
               setToken={setToken}
               setUserRoutines={setUserRoutines}
+              user={user}
             />
             <UserRoutines
               activities={activities}
@@ -55,31 +49,15 @@ const App = () => {
               userRoutines={userRoutines}
               setUserRoutines={setUserRoutines}
               token={token}
-              routines={routines}
               user={user}
             />
           </Route>
           <Route exact path="/activities">
-            <AddActivities
-              token={token}
-              setToken={setToken}
-              activities={activities}
-              setActivities={setActivities}
-            />
-            <Activities
-              activities={activities}
-              setActivities={setActivities}
-              token={token}
-              setToken={setToken}
-            />
+            <AddActivities token={token} setActivities={setActivities} />
+            <Activities activities={activities} setActivities={setActivities} />
           </Route>
           <Route exact path="/register">
-            <Register
-              token={token}
-              setToken={setToken}
-              user={user}
-              setUser={setUser}
-            />
+            <Register token={token} setToken={setToken} setUser={setUser} />
           </Route>
           <Route exact path="/logout">
             <Logout setUser={setUser} setToken={setToken} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { callApi } from "../api";
 
 const Activities = ({ activities, setActivities }) => {
@@ -12,6 +12,7 @@ const Activities = ({ activities, setActivities }) => {
     };
     getActivities();
   }, []);
+
   return (
     <>
       <h1>View all activities below:</h1>

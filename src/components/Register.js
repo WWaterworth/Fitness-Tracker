@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { callApi } from "../api";
 
-const Register = ({ token, setToken, user, setUser }) => {
+const Register = ({ token, setToken, setUser }) => {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

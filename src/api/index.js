@@ -1,4 +1,3 @@
-// THIS IS WHERE YOUR CLIENT SIDE API CODE LIVES
 const { REACT_API_URL = "https://fitnesstrac-kr.herokuapp.com/api" } =
   process.env;
 
