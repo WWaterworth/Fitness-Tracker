@@ -21,7 +21,8 @@ const Register = ({ token, setToken, user, setUser }) => {
         method: "POST",
         body: { username, password },
       });
-      if (token) {
+
+      if (!token) {
         setToken(result.token);
         setUser(result.user);
         history.push("/");

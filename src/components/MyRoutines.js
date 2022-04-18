@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { callApi } from "../api";
 
-const MyRoutines = ({ token, user, routines, setRoutines }) => {
+const MyRoutines = ({
+  token,
+  user,
+  routines,
+  setRoutines,
+  setUserRoutines,
+}) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(true);
@@ -19,10 +25,22 @@ const MyRoutines = ({ token, user, routines, setRoutines }) => {
     setName("");
     setGoal("");
   };
+  const reRenderUserRoutines = async () => {
+    const data = await callApi({
+      url: `/users/${user.username}/routines`,
+      method: "GET",
+      token,
+    });
+    setUserRoutines(data);
+    reRenderUserRoutines();
+  };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <br></br>
+        <label>Create a new fitness routine</label>
+        <br></br>
         <input
           type="text"
           placeholder="name"

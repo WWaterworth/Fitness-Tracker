@@ -15,7 +15,7 @@ const Routines = ({ routines, setRoutines }) => {
 
   return (
     <>
-      <h1>This is the routines page</h1>
+      <h1>See all public fitness routines below:</h1>
       {routines.map((routine) => {
         return (
           <div key={routine.id}>

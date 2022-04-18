@@ -34,6 +34,8 @@ const AddActivities = ({ token, user, activities, setActivities }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <label>Create a new activity</label>
+        <br></br>
         <input
           type="text"
           placeholder="name"

@@ -66,6 +66,19 @@ const UserRoutines = ({
       alert(error);
     }
   };
+  const deleteActivity = async (routineActivityId) => {
+    try {
+      const response = await callApi({
+        url: `/routine_activities/${routineActivityId}`,
+        method: "DELETE",
+        token,
+      });
+      reRenderUserRoutines();
+      return response;
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   const editPost = async (routineId, nameToEdit, goalToEdit, isPublic) => {
     await callApi({
@@ -91,7 +104,7 @@ const UserRoutines = ({
 
   return (
     <>
-      <h1>This is the single user routines page</h1>
+      <h1>These are your fitness routines</h1>
       {userRoutines.map((routine) => {
         return (
           <div key={routine.id}>
@@ -107,6 +120,7 @@ const UserRoutines = ({
                 setNameToEdit(event.target.value);
               }}
             />
+            <br></br>
             <input
               type="text"
               placeholder="Edit routine goal"
@@ -123,22 +137,33 @@ const UserRoutines = ({
             >
               Edit Routine
             </button>
+            <br></br>
             <button type="submit" onClick={() => deletePost(routine.id)}>
-              Delete
+              Delete Routine
             </button>
+            <br></br>
+            <br></br>
             {routine.activities.map((activity) => {
               return (
                 <>
                   <ul>
                     <li>Activity Name: {activity.name}</li>
-                    <li>Activity Description: {activity.duration}</li>
+                    <li>Activity Description: {activity.description}</li>
                     <li>Activity Duration: {activity.duration}</li>
                     <li>Activity Count: {activity.count}</li>
                   </ul>
+                  <button
+                    type="submit"
+                    onClick={() => deleteActivity(activity.routineActivityId)}
+                  >
+                    Delete Activity
+                  </button>
                 </>
               );
             })}
             <form onSubmit={addActivity(routine.id)}>
+              <label>Add an activity to this routine:</label>
+              <br></br>
               <select onChange={(event) => setActivityId(event.target.value)}>
                 {activities.map((activity) => (
                   <option key={activity.id} value={activity.id}>

@@ -14,7 +14,7 @@ const Activities = ({ activities, setActivities }) => {
   }, []);
   return (
     <>
-      <h1>This is the activities page</h1>
+      <h1>View all activities below:</h1>
       {activities.map((activity) => {
         return (
           <div key={activity.id}>
