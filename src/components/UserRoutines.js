@@ -64,6 +64,22 @@ const UserRoutines = ({
       alert(error);
     }
   };
+
+  const editActivity = async (routineActivityId) => {
+    const editedActivity = { count, duration };
+    try {
+      await callApi({
+        url: `/routine_activities/${routineActivityId}`,
+        method: "PATCH",
+        token,
+        body: { count, duration },
+      });
+      return editedActivity;
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   const deleteActivity = async (routineActivityId) => {
     try {
       const response = await callApi({
@@ -149,6 +165,28 @@ const UserRoutines = ({
                     <li>Activity Description: {activity.description}</li>
                     <li>Activity Duration: {activity.duration}</li>
                     <li>Activity Count: {activity.count}</li>
+                    <input
+                      type="text"
+                      placeholder="Edit activity count"
+                      onChange={(event) => {
+                        console.log(event.target.value);
+                        setCount(event.target.value);
+                      }}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Edit activity duration"
+                      onChange={(event) => {
+                        console.log(event.target.value);
+                        setDuration(event.target.value);
+                      }}
+                    />
+                    <button
+                      type="submit"
+                      onClick={() => editActivity(activity.routineActivityId)}
+                    >
+                      Edit Activity
+                    </button>
                   </ul>
                   <button
                     type="submit"
