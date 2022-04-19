@@ -16,13 +16,13 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
-  const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
+  const [routines, setRoutines] = useState([]);
   const [userRoutines, setUserRoutines] = useState([]);
 
   return (
     <>
-      <main>
+      <main className="App">
         <BrowserRouter>
           <Nav token={token} />
           <Route exact path="/">
@@ -34,14 +34,20 @@ const App = () => {
           <Route exact path="/login">
             <Login token={token} setToken={setToken} setUser={setUser} />
           </Route>
-          <Route exact path="/myroutines">
+          <Route exact path="/register">
+            <Register token={token} setToken={setToken} setUser={setUser} />
+          </Route>
+          <Route exact path="/logout">
+            <Logout setUser={setUser} setToken={setToken} />
+          </Route>
+          <Route path="/myroutines">
             <MyRoutines
               routines={routines}
               setRoutines={setRoutines}
               token={token}
               setToken={setToken}
-              setUserRoutines={setUserRoutines}
               user={user}
+              setUserRoutines={setUserRoutines}
             />
             <UserRoutines
               activities={activities}
@@ -52,20 +58,13 @@ const App = () => {
               user={user}
             />
           </Route>
-          <Route exact path="/activities">
+          <Route path="/activities">
             <AddActivities token={token} setActivities={setActivities} />
             <Activities activities={activities} setActivities={setActivities} />
-          </Route>
-          <Route exact path="/register">
-            <Register token={token} setToken={setToken} setUser={setUser} />
-          </Route>
-          <Route exact path="/logout">
-            <Logout setUser={setUser} setToken={setToken} />
           </Route>
         </BrowserRouter>
       </main>
     </>
   );
 };
-
 export default App;

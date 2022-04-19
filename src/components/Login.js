@@ -9,7 +9,6 @@ const Login = ({ token, setToken, setUser }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const result = await callApi({
         url: "/users/login",
@@ -27,13 +26,14 @@ const Login = ({ token, setToken, setUser }) => {
       console.log(error);
     }
   };
+
   return (
     <>
-      <h1>This is the login page</h1>
+      <h1> Login to Fitness Track.r</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="username"
+          placeholder="login username"
           value={username}
           onChange={(event) => {
             setUsername(event.target.value);
@@ -41,7 +41,7 @@ const Login = ({ token, setToken, setUser }) => {
         ></input>
         <input
           type="password"
-          placeholder="password"
+          placeholder="login password"
           value={password}
           onChange={(event) => {
             setPassword(event.target.value);
@@ -55,5 +55,4 @@ const Login = ({ token, setToken, setUser }) => {
     </>
   );
 };
-
 export default Login;

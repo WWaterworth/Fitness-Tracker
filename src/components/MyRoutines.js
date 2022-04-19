@@ -32,19 +32,19 @@ const MyRoutines = ({ token, user, setUserRoutines }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <br></br>
-        <label>Create a new fitness routine</label>
+        <label> Create A New Routine: </label>
         <br></br>
         <input
           type="text"
-          placeholder="name"
+          placeholder="New routine name"
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
         <input
           type="text"
-          placeholder="goal"
+          placeholder="New routine goal"
           value={goal}
           onChange={(event) => setGoal(event.target.value)}
         />
@@ -56,7 +56,7 @@ const MyRoutines = ({ token, user, setUserRoutines }) => {
           />
           <span className="public" style={{ marginLeft: "8px" }}>
             {" "}
-            Is Public?{" "}
+            Make Routine Public{" "}
           </span>
         </div>
         <button type="submit">Submit</button>

@@ -7,7 +7,7 @@ const AddActivities = ({ token, setActivities }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     await callApi({
       url: "/activities",
       method: "POST",
@@ -19,34 +19,33 @@ const AddActivities = ({ token, setActivities }) => {
       url: `/activities`,
       method: "GET",
     });
+
     setActivities(allActivitiesResp);
     setName("");
     setDescription("");
   };
 
   const reRenderActivities = async () => {
-    const allActivities = await callApi({
-      url: `/activities`,
-      method: "GET",
-    });
-    setActivities(allActivities);
+    const allActivities = await callApi({ url: `/activities`, method: "GET" });
+    setActivities(allActivitiesResp);
     reRenderActivities();
   };
 
   return (
     <>
+      <br />
+      <h2>Create a new Activity for Track.r</h2>
+      <br />
       <form onSubmit={handleSubmit}>
-        <label>Create a new activity</label>
-        <br></br>
         <input
           type="text"
-          placeholder="name"
+          placeholder="New Activity name"
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
         <input
           type="text"
-          placeholder="description"
+          placeholder="New Description"
           value={description}
           onChange={(event) => setDescription(event.target.value)}
         />

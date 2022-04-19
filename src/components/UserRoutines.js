@@ -118,10 +118,10 @@ const UserRoutines = ({
 
   return (
     <>
-      <h1>These are your fitness routines</h1>
+      <h1>My Track.r Fitness Routines</h1>
       {userRoutines.map((routine) => {
         return (
-          <div key={routine.id}>
+          <div className="singlePosts" key={routine.id}>
             <h2>Routine: {routine.name}</h2>
             <p>Creator: {routine.creatorName}</p>
             <p>Goal: {routine.goal}</p>

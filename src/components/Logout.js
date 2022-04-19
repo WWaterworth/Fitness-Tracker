@@ -11,7 +11,7 @@ const Logout = ({ setToken, setUser }) => {
   return (
     <>
       <main>
-        <h1>Logging out here</h1>
+        <h1>Click below to log out</h1>
         <button
           onClick={() => {
             handleLogout();

@@ -15,10 +15,10 @@ const Routines = ({ routines, setRoutines }) => {
 
   return (
     <>
-      <h1>See all public fitness routines below:</h1>
+      <h1>All Track.r Routines</h1>
       {routines.map((routine) => {
         return (
-          <div key={routine.id}>
+          <div className="singlePosts" key={routine.id}>
             <h2>Routine: {routine.name}</h2>
             <p>Creator: {routine.creatorName}</p>
             <p>Goal: {routine.goal}</p>
@@ -39,5 +39,4 @@ const Routines = ({ routines, setRoutines }) => {
     </>
   );
 };
-
 export default Routines;

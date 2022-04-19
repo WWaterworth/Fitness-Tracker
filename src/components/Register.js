@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { callApi } from "../api";
 
-const Register = ({ token, setToken, setUser }) => {
+const Register = ({ token, setToken, user, setUser }) => {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,16 +33,16 @@ const Register = ({ token, setToken, setUser }) => {
       console.log(error);
     }
   };
+
   return (
     <>
-      <h1>This is the register page</h1>
+      <h1>Fill In Registration Form</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="username"
           value={username}
           onChange={(event) => {
-            console.log(event.target.value);
             setUsername(event.target.value);
           }}
         ></input>
@@ -51,7 +51,6 @@ const Register = ({ token, setToken, setUser }) => {
           placeholder="password"
           value={password}
           onChange={(event) => {
-            console.log(event.target.value);
             setPassword(event.target.value);
           }}
         ></input>
@@ -60,5 +59,4 @@ const Register = ({ token, setToken, setUser }) => {
     </>
   );
 };
-
 export default Register;

@@ -15,10 +15,10 @@ const Activities = ({ activities, setActivities }) => {
 
   return (
     <>
-      <h1>View all activities below:</h1>
+      <h1>Track.r Activities</h1>
       {activities.map((activity) => {
         return (
-          <div key={activity.id}>
+          <div className="singlePosts" key={activity.id}>
             <h2>Activity: {activity.name}</h2>
             <p>Description: {activity.description}</p>
           </div>
@@ -27,5 +27,4 @@ const Activities = ({ activities, setActivities }) => {
     </>
   );
 };
-
 export default Activities;
